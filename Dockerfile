@@ -2,13 +2,18 @@ FROM python:3.13-slim
 
 WORKDIR /app
 
-# Copy only necessary files first for better caching
-COPY pyproject.toml ./
+# Install uv for faster, more reliable dependency management
+RUN pip install uv
+
+# Copy dependency files first for better caching
+COPY pyproject.toml uv.lock ./
+
+# Install dependencies using uv with locked versions
+RUN uv pip install --system --no-cache .
+
+# Copy application code
 COPY src/ ./src/
 COPY entrypoint.py ./
-
-# Install dependencies
-RUN pip install --no-cache-dir -e .
 
 # Make entrypoint executable
 RUN chmod +x entrypoint.py
