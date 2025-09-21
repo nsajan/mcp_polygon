@@ -2,17 +2,9 @@ FROM python:3.13-slim
 
 WORKDIR /app
 
-# Install uv for faster, more reliable dependency management
-RUN pip install uv
-
-# Copy dependency files first for better caching
-COPY pyproject.toml uv.lock ./
-
-# Create a minimal README to satisfy build requirements
-RUN echo "# MCP Polygon Server" > README.md
-
-# Install dependencies using uv with locked versions
-RUN uv pip install --system --no-cache .
+# Install dependencies directly with pip
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY src/ ./src/
