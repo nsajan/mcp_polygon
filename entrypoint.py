@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 import os
+import sys
+from pathlib import Path
 from typing import Literal
+
+# Add src directory to Python path
+sys.path.insert(0, str(Path(__file__).parent / "src"))
+
 from mcp_polygon import server
 
 

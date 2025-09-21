@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(C:/Users/Sajan_Goel_Nagati/AppData/Local/Programs/Python/Python313/python.exe entrypoint.py)",
+      "Bash(C:/Users/Sajan_Goel_Nagati/AppData/Local/Programs/Python/Python313/python.exe -m pip install mcp[cli] polygon-api-client python-dotenv)",
+      "Bash(C:/Users/Sajan_Goel_Nagati/AppData/Local/Programs/Python/Python313/python.exe -c \"import mcp; print(''mcp installed'')\")",
+      "Bash(C:/Users/Sajan_Goel_Nagati/AppData/Local/Programs/Python/Python313/python.exe -m pip install mcp polygon-api-client python-dotenv)",
+      "Bash(set POLYGON_API_KEY=test_key)",
+      "Bash(where python)",
+      "Bash(python:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

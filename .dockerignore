@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.coverage
+*.cover
+.hypothesis/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Documentation
+*.md
+LICENSE
+docs/
+
+# Environment files (Railway will inject these)
+.env
+.env.*
+
+# Development files
+docker-compose.yml
+justfile
+glama.json
+.github/
+assets/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Testing
+tests/
+test_*.py
+*_test.py
+
+# Misc
+.DS_Store
+Thumbs.db

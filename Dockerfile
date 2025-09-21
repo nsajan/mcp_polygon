@@ -2,14 +2,19 @@ FROM python:3.13-slim
 
 WORKDIR /app
 
-# Install uv for dependency management
-RUN pip install uv
+# Copy only necessary files first for better caching
+COPY pyproject.toml ./
+COPY src/ ./src/
+COPY entrypoint.py ./
 
-COPY . ./
+# Install dependencies
+RUN pip install --no-cache-dir -e .
 
-RUN uv pip install --system -e .
+# Make entrypoint executable
 RUN chmod +x entrypoint.py
 
-ENV PYTHONPATH=/app/src:$PYTHONPATH
+# Railway will set PORT environment variable for HTTP services
+# For MCP server, we'll use the transport type from env
+ENV MCP_TRANSPORT=${MCP_TRANSPORT:-stdio}
 
-ENTRYPOINT ["uv", "run", "./entrypoint.py"]
+ENTRYPOINT ["python", "./entrypoint.py"]
